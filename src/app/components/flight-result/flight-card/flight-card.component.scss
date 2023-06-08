@@ -1,0 +1,26 @@
+.mat-card{
+    box-shadow: 0px -4px 5px rgba(146, 146, 146, 0.15),
+    0px 4px 5px rgba(146, 146, 146, 0.25);
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  .card-body{
+    padding: 32px 36px;
+  }
+  .logo-img{
+    width:130px;
+    border-radius: 20%;
+   
+  }
+  .line{
+    color:rgb(68, 68, 68);
+    width:70px;
+    margin-right: 10px;
+  }
+ 
+  .spanStyle{
+    font-size: 14px;
+    color:rgb(156, 154, 154);
+  }
+}

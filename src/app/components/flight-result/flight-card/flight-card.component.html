@@ -1,1 +1,46 @@
-<p>flight-card works!</p>
+
+<div class="container">
+        <div *ngFor="let outerflight of flightData ">
+            <div *ngFor="let innerFlight of outerflight.allJourney.flights">
+                <div *ngFor="let data of innerFlight.flightDTO">
+                    <mat-card class="mat-card">
+                        <mat-card-content class="card-body">
+                            <div class=" row d-flex justify-content-center align-items-center">
+                                <img class="col-lg-1 col-md-1 logo-img " src={{data.flightAirline.airlineLogo}}>
+                                <div class="col-lg-1 col-md-1">{{data.flightAirline.airlineName}}</div>
+                                <div class="col-lg-4 col-md-12 d-flex justify-content-between">
+                                    <div>{{data.departureDate | date: 'short'  }}
+                                       <span class="spanStyle"> {{data.departureTerminalAirport.cityName}}</span>
+                                    </div>
+                                    <hr class="line">
+                                    <div>{{data.arrivalDate | date: 'short'}}
+                                        <span class="spanStyle">{{data.arrivalTerminalAirport.cityName}}</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-1 col-md-4">{{data.durationPerLeg | duration}}
+                                    <span class="spanStyle">{{data.isStopSegment? 'Stop' : 'Direct'}}</span>
+                                </div>
+                                <div class="col-lg-2 col-md-4">{{outerflight.itinTotalFare.amount}}
+                                    <span>{{outerflight.itinTotalFare.currencyCode}}</span>
+                                </div>
+                                <div class="col-lg-2 col-md-4">
+                                    <button mat-raised-button color="warn" routerLink="/">Book Now</button>
+
+                                </div>
+                            </div>
+                    
+                </mat-card-content>
+                </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+
+
+
+
+

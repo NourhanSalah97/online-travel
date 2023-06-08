@@ -11,6 +11,9 @@ import { FlightCardComponent } from './components/flight-result/flight-card/flig
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { DurationPipe } from './shared/duration';
+
 
 @NgModule({
   declarations: [
@@ -19,11 +22,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FlightResultComponent,
     SelectedFlightComponent,
     FilterComponent,
-    FlightCardComponent
+    FlightCardComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule
