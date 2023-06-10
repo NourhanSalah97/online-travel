@@ -13,6 +13,7 @@ import { MaterialModule } from './shared/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { DurationPipe } from './shared/duration';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { DurationPipe } from './shared/duration';
     SelectedFlightComponent,
     FilterComponent,
     FlightCardComponent,
-    DurationPipe
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,9 @@ import { DurationPipe } from './shared/duration';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgbModule
+    NgbModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

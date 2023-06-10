@@ -10,6 +10,7 @@ import { DataService } from 'src/app/shared/data.service';
 export class FlightCardComponent implements OnInit {
   //defining properties
   flightData!: IairItineraries[];
+  filteredData!: any[];
 
 constructor(private dataService:DataService){
 
@@ -21,10 +22,11 @@ constructor(private dataService:DataService){
   
 
       
-      console.log(this.flightData);
       
     });
-
+    this.dataService.filteredData$.subscribe(data => {
+      this.filteredData = data;
+    });
   }
 }
 

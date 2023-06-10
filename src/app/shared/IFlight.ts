@@ -8,6 +8,9 @@ export interface IairItineraries{
     allJourney:{
         flights:IFlight[]
     }
+    baggageInformation:{
+        airlineName:string,
+    }
 }
 
 export interface IFlight{

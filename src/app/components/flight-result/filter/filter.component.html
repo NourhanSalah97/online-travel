@@ -1,1 +1,76 @@
-<p>filter works!</p>
+<div class="">
+<mat-card class="mat-card">
+  <mat-card-content class="card-body">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon
+              aria-hidden="true"
+              class="me-2"
+              fontIcon="payments"
+            ></mat-icon>
+            Price Range Filter
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-slider
+          class="slider-class"
+          min="100"
+          max="1000"
+          step="100"
+          [displayWith]="formatLabel"
+          discrete
+        >
+          <input matSliderStartThumb  [(ngModel)]="sliderStartValue"  (change)="filterPrice()" />
+          <input matSliderEndThumb [(ngModel)]="sliderEndValue" (change)="filterPrice()"/>
+        </mat-slider>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        class="mt-2"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon
+              aria-hidden="true"
+              class="me-2"
+              fontIcon="stopcircle"
+            ></mat-icon>
+            Stops
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-checkbox color="warn"  [(ngModel)]="directChecked" (change)=" filterStops() "> Direct </mat-checkbox>
+        <mat-checkbox color="warn" [(ngModel)]="withStopChecked" (change)=" filterStops() "> With Stop </mat-checkbox>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        class="mt-2"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon
+              aria-hidden="true"
+              class="me-2"
+              fontIcon="airlines"
+            ></mat-icon>
+            Airline Name
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li *ngFor="let airline of airLines" >
+            <mat-checkbox color="warn" [value]="airline" >
+              {{ airline }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
+</div>

@@ -1,0 +1,22 @@
+.task-container{
+    display:flex;
+    justify-content: center;
+    @media screen and (max-width :768px) {
+        display:block;
+    }
+}
+.filter-item{
+    width:20%;
+    height: 100%;
+    @media screen and (max-width :768px) {
+        width:100%;
+    }
+}
+.card-item{
+    width:80%;
+
+    @media screen and (max-width :768px) {
+        width:100%;
+
+    }
+}

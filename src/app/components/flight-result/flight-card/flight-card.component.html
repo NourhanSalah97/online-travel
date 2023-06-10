@@ -1,6 +1,6 @@
 
 <div class="container">
-        <div *ngFor="let outerflight of flightData ">
+        <div *ngFor="let outerflight of filteredData ">
             <div *ngFor="let innerFlight of outerflight.allJourney.flights">
                 <div *ngFor="let data of innerFlight.flightDTO">
                     <mat-card class="mat-card">
@@ -18,13 +18,13 @@
                                     </div>
 
                                 </div>
-                                <div class="col-lg-1 col-md-4">{{data.durationPerLeg | duration}}
+                                <div class="col-lg-1 col-md-4 mt-md-2">{{data.durationPerLeg | duration}}
                                     <span class="spanStyle">{{data.isStopSegment? 'Stop' : 'Direct'}}</span>
                                 </div>
-                                <div class="col-lg-2 col-md-4">{{outerflight.itinTotalFare.amount}}
+                                <div class="col-lg-2 col-md-4 mt-md-2">{{outerflight.itinTotalFare.amount}}
                                     <span>{{outerflight.itinTotalFare.currencyCode}}</span>
                                 </div>
-                                <div class="col-lg-2 col-md-4">
+                                <div class="col-lg-2 col-md-4 mt-md-2">
                                     <button mat-raised-button color="warn" routerLink="/">Book Now</button>
 
                                 </div>
