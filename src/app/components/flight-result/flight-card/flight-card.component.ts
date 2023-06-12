@@ -19,7 +19,7 @@ constructor(private dataService:DataService){
     //retriving data from service 
     this.dataService.getData().subscribe(data => {
       this.flightData=data;
-  
+      console.log(this.flightData);
 
       
       

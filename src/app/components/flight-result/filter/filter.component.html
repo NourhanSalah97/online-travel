@@ -64,7 +64,7 @@
         </mat-expansion-panel-header>
         <ul>
           <li *ngFor="let airline of airLines" >
-            <mat-checkbox color="warn" [value]="airline" >
+            <mat-checkbox color="warn" [value]="airline" (change)="toggleAirline(airline)" >
               {{ airline }}
             </mat-checkbox>
           </li>

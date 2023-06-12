@@ -18,8 +18,8 @@ export class FilterComponent implements OnInit {
   flightDetails!: IFlightDTO[];
   filteredData!: any[];
   generalData!: IairItineraries[];
-  airlineNames!: string;
-  formatLabel(value: number): string {
+  selectedAirlines: string[] = [];
+    formatLabel(value: number): string {
     if (value >= 100 && value <= 1000) {
       return value + 'KWD';
     }
@@ -54,17 +54,9 @@ export class FilterComponent implements OnInit {
   filterStops() {
     this.filteredData = this.generalData?.filter((item) => {
       if (this.directChecked && !this.withStopChecked) {
-        return item.allJourney.flights.map((DTO: any) =>
-          DTO.flightDTO.filter((elem: any) => 
-             (elem.isStopSegment==true)
-          )
-        );
+        return item.allJourney.flights[0].flightDTO[0].isStopSegment===false 
       } else if (!this.directChecked && this.withStopChecked) {
-        return item.allJourney.flights.map((DTO: any) =>
-          DTO.flightDTO.filter((elem: any) => {
-           elem.isStopSegment==false;
-          })
-        );
+        return item.allJourney.flights[0].flightDTO[0].isStopSegment===true;
       } else if (this.directChecked && this.withStopChecked) {
         return true;
       } else {
@@ -73,13 +65,31 @@ export class FilterComponent implements OnInit {
     });
     this.dataService.updateFilteredData(this.filteredData);
   }
-  // filterAirLine(){
-  //   this.filteredData=this.
-  //   generalData?.filter(item=>{
-  //     return this.airlineNames.length === 0 || this.airlineNames.includes(item.baggageInformation.airlineName);
+  toggleAirline(airline:string){
+    const index = this.selectedAirlines.indexOf(airline);
 
-  //   })
-  //   this.dataService.updateFilteredData(this.filteredData);
-
-  // }
+    if (index >= 0) {
+      this.selectedAirlines.splice(index, 1);
+    } else {
+      this.selectedAirlines.push(airline);
+    }
+    this.filterAirLine();
+  }
+  filterAirLine(){
+    if (this.selectedAirlines.length===0){
+      this.filteredData=this.generalData;
+    }else{
+    this.filteredData = this.generalData.filter((item) => {
+      const flightDTO = item.allJourney.flights[0].flightDTO;
+      const hasSelectedAirlines = flightDTO.some((flight) =>
+        this.selectedAirlines.includes(flight.flightAirline.airlineName)
+      );
+      return hasSelectedAirlines;
+    
+    }); 
+       }
+     this.dataService.updateFilteredData(this.filteredData);
 }
+}
+
+ 
